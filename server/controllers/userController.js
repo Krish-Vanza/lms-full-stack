@@ -30,7 +30,7 @@ export const purchaseCourse = async (req, res) => {
 
     try {
 
-        const { isNitwStudent,courseId } = req.body
+        const { courseId } = req.body
         const { origin } = req.headers
 
 
