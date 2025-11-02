@@ -30,7 +30,7 @@ export const purchaseCourse = async (req, res) => {
 
     try {
 
-        const { courseId } = req.body
+        const { isNitwStudent,courseId } = req.body
         const { origin } = req.headers
 
 
@@ -46,7 +46,7 @@ export const purchaseCourse = async (req, res) => {
         const purchaseData = {
             courseId: courseData._id,
             userId,
-            amount: (courseData.coursePrice - courseData.discount * courseData.coursePrice / 100).toFixed(2),
+            amount: isNitwStudent ? 0 :(courseData.coursePrice - courseData.discount * courseData.coursePrice / 100).toFixed(2),
         }
 
         const newPurchase = await Purchase.create(purchaseData)
