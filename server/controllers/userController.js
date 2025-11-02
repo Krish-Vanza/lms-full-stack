@@ -30,16 +30,16 @@ export const purchaseCourse = async (req, res) => {
 
     try {
 
-        const { courseId,headers } = req.body
+        const { courseId } = req.body
         const { origin } = req.headers
-
-        const isNitwStudent = headers.isNitwStudent;
 
 
         const userId = req.auth.userId
 
         const courseData = await Course.findById(courseId)
         const userData = await User.findById(userId)
+        const isNitwStudent = userData.email.endsWith('@student.nitw.ac.in');
+
 
         if (!userData || !courseData) {
             return res.json({ success: false, message: 'Data Not Found' })
