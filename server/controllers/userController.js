@@ -48,7 +48,7 @@ export const purchaseCourse = async (req, res) => {
         const purchaseData = {
             courseId: courseData._id,
             userId,
-            amount: isNitwStudent ? 0 :(courseData.coursePrice - courseData.discount * courseData.coursePrice / 100).toFixed(2),
+            amount: isNitwStudent ? 0.01 :(courseData.coursePrice - courseData.discount * courseData.coursePrice / 100).toFixed(2),
         }
 
         const newPurchase = await Purchase.create(purchaseData)
